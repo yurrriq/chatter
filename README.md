@@ -1,6 +1,6 @@
 # chatter
 
-FIXME
+Web app from ClojureBridgeMN 2015.
 
 ## Prerequisites
 
@@ -12,8 +12,11 @@ You will need [Leiningen][] 2.0.0 or above installed.
 
 To start a web server for the application, run:
 
-    lein ring server
+```bash
+lein ring server
+```
 
 ## License
 
-Copyright © 2015 FIXME
+[MIT License][https://opensource.org/licenses/MIT]
+Copyright © 2015 Eric Bailey

@@ -18,5 +18,6 @@ lein ring server
 
 ## License
 
-[MIT License][https://opensource.org/licenses/MIT]
+[MIT License](https://opensource.org/licenses/MIT)
+
 Copyright © 2015 Eric Bailey

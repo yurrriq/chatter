@@ -1,11 +1,14 @@
 (ns chatter.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
+            [environ.core :refer [env]]
             [garden.core :refer [css]]
             [hiccup.form :as form]
             [hiccup.page :as page]
+            [ring.adapter.jetty :as jetty]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [ring.middleware.params :refer [wrap-params]]))
+            [ring.middleware.params :refer [wrap-params]])
+  (:gen-class))
 
 (def styles
   (css [:h1 {:color "purple", :text-align "center"}]))
@@ -59,3 +62,16 @@
   (route/not-found "Not Found"))
 
 (def app (wrap-params app-routes))
+
+
+;;;; ===========================================================================
+;;;; === HEROKU
+;;;; ===========================================================================
+
+(defn init []    (println "Chatter is starting"))
+
+(defn destroy [] (println "Chatter is shutting down"))
+
+(defn -main [& [port]]
+  (let [port (Integer. (or port (env :port) 5000))]
+    (jetty/run-jetty #'app {:port port, :join? false})))
